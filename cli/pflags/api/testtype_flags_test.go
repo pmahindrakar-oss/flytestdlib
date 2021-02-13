@@ -407,26 +407,4 @@ func TestTestType_SetFlags(t *testing.T) {
 			}
 		})
 	})
-	t.Run("Test_m", func(t *testing.T) {
-		t.Run("DefaultValue", func(t *testing.T) {
-			// Test that default value is set properly
-			if vStringToString, err := cmdFlags.GetStringToString("m"); err == nil {
-				assert.Equal(t, map[string]string(map[string]string{}), vStringToString)
-			} else {
-				assert.FailNow(t, err.Error())
-			}
-		})
-
-		t.Run("Override", func(t *testing.T) {
-			testValue := "a=1"
-
-			cmdFlags.Set("m", testValue)
-			if vStringToString, err := cmdFlags.GetStringToString("m"); err == nil {
-				testDecodeJson_TestType(t, fmt.Sprintf("%v", vStringToString), &actual.StringMap)
-
-			} else {
-				assert.FailNow(t, err.Error())
-			}
-		})
-	})
 }

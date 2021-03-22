@@ -407,18 +407,4 @@ func TestTestType_SetFlags(t *testing.T) {
 			}
 		})
 	})
-	t.Run("Test_m", func(t *testing.T) {
-
-		t.Run("Override", func(t *testing.T) {
-			testValue := "a=1,b=2"
-
-			cmdFlags.Set("m", testValue)
-			if vStringToString, err := cmdFlags.GetStringToString("m"); err == nil {
-				testDecodeRaw_TestType(t, vStringToString, &actual.StringMap)
-
-			} else {
-				assert.FailNow(t, err.Error())
-			}
-		})
-	})
 }
